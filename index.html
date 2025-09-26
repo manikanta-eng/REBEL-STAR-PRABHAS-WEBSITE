@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prabhas Movies - Official Collection</title>
+  <style>
+    /* --- Your existing styles are preserved --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+      color: white;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd700);
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .header h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+      margin-bottom: 0.5rem;
+    }
+
+    .header .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    .nav {
+      background: rgba(0,0,0,0.8);
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      padding: 0.8rem 2rem;
+      background: linear-gradient(45deg, #ff6b35, #f7931e);
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.3s;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----------------- */
+    /* 📽️ Poster Slider */
+    /* ----------------- */
+    .slider-wrapper {
+      margin: 2rem auto;
+      overflow: hidden;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: max-content;
+    }
+
+    .slide {
+      min-width: 100%;
+      transition: all 0.5s;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .slide img {
+        height: 300px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎬 PRABHAS MOVIES 🎬</h1>
+    <p class="subtitle">The Ultimate Collection of Rebel Star's Blockbusters</p>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn active" onclick="showSection('home', this)">Home</button>
+    <button class="nav-btn" onclick="showSection('movies', this)">All Movies</button>
+    <button class="nav-btn" onclick="showSection('latest', this)">Latest</button>
+    <button class="nav-btn" onclick="showSection('stats', this)">Stats</button>
+  </div>
+
+  <div class="container">
+    <!-- Home Section -->
+    <div id="home" class="section active">
+      <div class="hero-section">
+        <h2 class="hero-title">Welcome to Prabhas Universe</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Experience the magic of Rebel Star's incredible journey from regional cinema to pan-Indian blockbusters!</p>
+        <button class="watch-btn" onclick="showSection('movies', this)" style="width: auto; padding: 1rem 3rem;">
+          🍿 Explore Movies
+        </button>
+      </div>
+
+      <!-- 🎞️ Poster Image Slider -->
+      <div class="slider-wrapper">
+        <div class="slider" id="posterSlider">
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1200&fit=crop" alt="Baahubali">
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1594736797933-d0400e808d01?w=800&h=1200&fit=crop" alt="Baahubali 2">
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=1200&fit=crop" alt="Saaho">
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=800&h=1200&fit=crop" alt="Salaar">
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&h=1200&fit=crop" alt="Kalki 2898 AD">
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats or other content -->
+      <div class="stats-section">
+        <h3 style="color: #ff6b35; margin-bottom: 2rem; font-size: 2rem;">Career Highlights</h3>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Movies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Years in Cinema</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">₹2000Cr+</div>
+            <div class="stat-label">Box Office</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">Pan-India</div>
+            <div class="stat-label">Superstar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- You can keep your existing #movies, #latest, #stats sections here -->
+  </div>
+
+  <script>
+    // 🌟 Auto Slider Logic
+    let currentSlide = 0;
+    const slider = document.getElementById('posterSlider');
+    const slides = document.querySelectorAll('#posterSlider .slide');
+
+    function showSlide(index) {
+      const slideWidth = slides[0].clientWidth;
+      slider.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 4000); // Auto-slide every 4 seconds
+
+    // 🔁 Navigation Handling
+    function showSection(id, btn) {
+      document.querySelectorAll('.section').forEach
